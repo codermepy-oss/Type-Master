@@ -1,1 +1,278 @@
+/* --- 1. VARIABLES & THEMES --- */
+:root {
+    --accent: #2ecc71;
+    --bg-dark: #050a05;
+    --text-main: #ffffff;
+    --text-sub: rgba(255, 255, 255, 0.7);
+    --glass: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.1);
+}
 
+body.light-mode {
+    --accent: #e67e22;
+    --bg-dark: #f0f2f5;
+    --text-main: #1a1a1a;
+    --text-sub: #444444;
+    --glass: rgba(255, 255, 255, 0.8);
+    --border: rgba(0, 0, 0, 0.1);
+}
+
+/* --- 2. RESET & BASE --- */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-dark); 
+    color: var(--text-main); 
+    height: 100vh; 
+    overflow: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    transition: background 0.3s, color 0.3s;
+}
+
+/* --- 3. NAVIGATION --- */
+.glass-nav { 
+    padding: 20px 5%; 
+    display: flex; 
+    justify-content: center; 
+}
+
+.nav-content { 
+    width: 100%; 
+    max-width: 1200px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo-text { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+
+.theme-btn-styled { 
+    background: var(--glass); 
+    border: 1px solid var(--border); 
+    color: var(--text-main); 
+    padding: 10px 20px; 
+    border-radius: 12px; 
+    cursor: pointer; 
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* --- 4. LAYOUT SYSTEM --- */
+.main-wrapper { 
+    flex: 1; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    padding: 20px; 
+}
+
+.page { 
+    display: none; 
+    width: 100%; 
+    max-width: 850px; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+.page.active { display: flex; animation: fadeIn 0.4s ease forwards; }
+
+.glass-card { 
+    background: var(--glass); 
+    backdrop-filter: blur(15px); 
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border); 
+    border-radius: 30px; 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2); 
+}
+
+/* --- 5. DASHBOARD (HERO) --- */
+.hero-card { padding: 60px 40px; text-align: center; width: 100%; }
+
+.hero-emoji-top { font-size: 2.5rem; margin-bottom: 10px; }
+
+.hero-title { 
+    font-size: 5rem; 
+    font-weight: 900; 
+    color: var(--accent); 
+    margin: 5px 0; 
+}
+
+.hero-sub, .hero-tagline, .hero-desc { 
+    color: var(--text-main); 
+    margin-bottom: 15px;
+}
+
+.hero-sub { font-weight: 700; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+.hero-tagline { font-size: 1.5rem; font-weight: 600; }
+.hero-desc { font-size: 1.1rem; opacity: 0.7; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+/* --- 6. PRACTICE PAGE --- */
+.practice-layout { width: 100%; display: flex; flex-direction: column; gap: 20px; }
+
+.stats-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    width: 100%; 
+}
+
+.stat-tile { 
+    padding: 30px 10px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    min-height: 140px; 
+}
+
+.value { font-size: 3rem; font-weight: 900; color: var(--accent); line-height: 1; }
+.label { font-size: 0.75rem; font-weight: 800; color: var(--text-main); opacity: 0.6; margin-top: 8px; }
+
+/* Typing Box */
+.main-typing-box { padding: 50px 40px; text-align: center; }
+
+.sentence-display { 
+    font-size: 1.8rem; 
+    margin-bottom: 30px; 
+    color: var(--text-main);
+    opacity: 0.3; /* Un-typed text */
+    min-height: 1.5em; 
+}
+
+.sentence-display span.correct { color: var(--accent); opacity: 1; text-shadow: 0 0 10px var(--accent); }
+.sentence-display span.incorrect { color: #ff4757; opacity: 1; background: rgba(255, 71, 87, 0.2); border-radius: 4px; }
+
+#typing-input { 
+    width: 100%; 
+    background: rgba(150,150,150,0.1); 
+    border: 1px solid var(--border); 
+    border-radius: 15px; 
+    padding: 18px; 
+    color: var(--text-main); 
+    text-align: center; 
+    font-size: 1.2rem; 
+    outline: none; 
+}
+
+/* --- 7. BUTTONS & EXIT --- */
+.btn-primary { 
+    background: var(--accent); 
+    color: #050a05; 
+    padding: 16px 45px; 
+    border-radius: 18px; 
+    border: none; 
+    font-weight: 800; 
+    cursor: pointer; 
+    font-size: 1.1rem;
+    transition: transform 0.2s, filter 0.2s; 
+}
+
+.btn-primary:hover { transform: scale(1.05); filter: brightness(1.1); }
+
+.exit-container { width: 100%; display: flex; justify-content: center; margin-top: 10px; }
+
+.exit-tile { 
+    background: var(--glass) !important; 
+    border: 1px solid var(--border); 
+    padding: 12px 35px; 
+    border-radius: 50px; 
+    color: var(--text-main) !important; 
+    font-weight: 700; 
+    cursor: pointer; 
+}
+
+/* --- 8. RESULTS MODAL --- */
+.modal { 
+    position: fixed; 
+    inset: 0; 
+    background: rgba(0,0,0,0.8); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    z-index: 1000; 
+    backdrop-filter: blur(8px); 
+}
+
+.modal-box { 
+    padding: 50px; 
+    text-align: center; 
+    width: 90%; 
+    max-width: 450px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* PERFECT ALIGNMENT */
+}
+
+.hidden { display: none !important; }
+
+/* Modal Stats Matching Accuracy Font */
+.result-value { 
+    font-size: 3.5rem; 
+    color: var(--accent); 
+    font-weight: 900; 
+    margin: 5px 0; 
+}
+
+.modal-subtext {
+    font-size: 1.2rem;
+    color: var(--text-main);
+    opacity: 0.8;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.modal-actions { display: flex; gap: 15px; margin-top: 10px; }
+
+/* --- 9. RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3.5rem; }
+    .stats-grid { gap: 10px; }
+    .stat-tile { min-height: 110px; }
+    .value { font-size: 2rem; }
+    .sentence-display { font-size: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+    body { overflow-y: auto; }
+    .main-wrapper { align-items: flex-start; padding-top: 40px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .hero-title { font-size: 2.5rem; }
+    .modal-actions { flex-direction: column; width: 100%; }
+    .btn-primary { width: 100%; }
+}
+
+/* --- 10. EFFECTS --- */
+@keyframes fadeIn { 
+    from { opacity: 0; transform: translateY(15px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+.bubble-container { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+.bubble { position: absolute; background: var(--accent); opacity: 0.05; border-radius: 50%; }
+
+.sentence-display {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    color: var(--text-main); /* FIX: Uses the adaptive color variable */
+    opacity: 0.4; /* Base opacity for untyped text */
+    line-height: 1.5;
+}
+
+.sentence-display span.correct {
+    color: var(--accent);
+    opacity: 1;
+}
+
+.sentence-display span.incorrect {
+    color: #ff4757;
+    opacity: 1;
+    background: rgba(255, 71, 87, 0.2);
+}
